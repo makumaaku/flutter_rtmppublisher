@@ -12,7 +12,7 @@ import io.flutter.view.TextureRegistry
 
 
 internal class MethodCallHandlerImpl(
-        private val activity: Activity,
+        private val activity: Activity?,
         private val messenger: BinaryMessenger,
         private val cameraPermissions: CameraPermissions,
         private val permissionsRegistry: PermissionStuff,

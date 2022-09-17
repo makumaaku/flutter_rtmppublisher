@@ -39,7 +39,10 @@ object CameraUtils {
 
     @Throws(CameraAccessException::class)
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun getAvailableCameras(activity: Activity): List<Map<String, Any>> {
+    fun getAvailableCameras(activity: Activity?): List<Map<String, Any>> {
+        if (activity == null) {
+            return []
+        }
         val cameraManager = activity.getSystemService(Context.CAMERA_SERVICE) as CameraManager
         val cameraNames = cameraManager.cameraIdList
         val cameras: MutableList<Map<String, Any>> = ArrayList()
