@@ -42,8 +42,12 @@ public class RtmppublisherPlugin : FlutterPlugin, ActivityAware {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
             val plugin = RtmppublisherPlugin();
+            var activity: Activity? = registrar.activity();
+            if (activity == null) {
+                return;
+            }
             plugin.maybeStartListening(
-                    registrar.activity(),
+                    activity,
                     registrar.messenger(),
                     object : PermissionStuff {
                         override fun adddListener(listener: PluginRegistry.RequestPermissionsResultListener) {
